@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="shortcut icon" href="">
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+    <script>
+
+        var URLAPI = "api/EventTables";
+        function create() {
+            var product = {
+                ID: $('#id').val(),
+                Ename: $('#Ename').val(),
+                Pname: $('#pname').val(),
+                Edes: $('#description').val(),
+                Edate: $('#date').val(),
+                isPassed: $('#ispassed').val()
+            };
+            $.ajax({
+                url: URLAPI,
+                cache: false,
+                type: 'POST',
+                dataType: "json",
+                data: product,
+                success: function (msg) {
+                    if (msg) {
+                        alert("Addition successful with" + msg);
+                    }
+                    else
+                        alert("Addition not sucessful");
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+
+    <h2> ADD DATA </h2>
+    <label>ID:</label>
+    <input type="text" id="id" /><br />
+    <label>Event Name:</label>
+    <input type="text" id="Ename" /><br />
+    <label>Event Date:</label>
+    <input type="text" id="date" /><br />
+    <label>Event Description:</label>
+    <input type="text" id="description" /><br />
+    <label>Presenter Name:</label>
+    <input type="text" id="pname" /><br />
+    <label>IsPassed:</label>
+    <input type="text" id="ispassed" /><br />
+    <input type="button" onclick="create()" />
+
+</body>
+</html>

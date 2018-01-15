@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="techtalk2ModelStoreContainer" CdmEntityContainer="techtalk2Entities">
+    <EntitySetMapping Name="EventTables">
+      <EntityTypeMapping TypeName="techtalk2Model.EventTable">
+        <MappingFragment StoreEntitySet="EventTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="Pname" ColumnName="Pname" />
+          <ScalarProperty Name="Edes" ColumnName="Edes" />
+          <ScalarProperty Name="Edate" ColumnName="Edate" />
+          <ScalarProperty Name="isPassed" ColumnName="isPassed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

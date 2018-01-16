@@ -9,17 +9,28 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using techtalk2;
+using System.Web.Http.Cors;
 
 namespace techtalk2.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class EventTablesController : ApiController
     {
+
         private techtalk2Entities db = new techtalk2Entities();
 
         // GET: api/EventTables
         public IQueryable<EventTable> GetEventTables()
         {
-            return db.EventTables;
+            var upcomingEvents = from s in db.EventTables where s.isPassed == false select s;
+            return upcomingEvents;
+        }
+
+        [HttpGet]
+        public IQueryable<EventTable> GetPastEvents()
+        {
+            var pastEvents = from s in db.EventTables where s.isPassed == true select s;
+            return pastEvents;
         }
 
         // GET: api/EventTables/5

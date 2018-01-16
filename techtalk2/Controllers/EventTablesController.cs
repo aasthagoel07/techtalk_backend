@@ -22,14 +22,14 @@ namespace techtalk2.Controllers
         // GET: api/EventTables
         public IQueryable<EventTable> GetEventTables()
         {
-            var upcomingEvents = from s in db.EventTables where s.isPassed == false select s;
+            var upcomingEvents = from s in db.EventTables where s.isPassed == false orderby s.Edate select s;
             return upcomingEvents;
         }
 
         [HttpGet]
         public IQueryable<EventTable> GetPastEvents()
         {
-            var pastEvents = from s in db.EventTables where s.isPassed == true select s;
+            var pastEvents = from s in db.EventTables where s.isPassed == true orderby s.Edate descending select s;
             return pastEvents;
         }
 

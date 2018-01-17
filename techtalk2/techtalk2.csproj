@@ -95,6 +95,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+      <LastGenOutput>AdminModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AdminModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+      <LastGenOutput>AdminModel.cs</LastGenOutput>
+    </Content>
     <Content Include="EventModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EventModel.edmx</DependentUpon>
@@ -110,7 +120,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Table.cs">
+      <DependentUpon>AdminModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Admin_TableController.cs" />
     <Compile Include="Controllers\EventTablesController.cs" />
     <Compile Include="EventModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -142,6 +171,13 @@
     </EntityDeploy>
     <Content Include="EventModel.edmx.diagram">
       <DependentUpon>EventModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="AdminModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdminModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="AdminModel.edmx.diagram">
+      <DependentUpon>AdminModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

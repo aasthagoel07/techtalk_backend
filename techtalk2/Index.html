@@ -9,10 +9,57 @@
 
     <script>
 
-        var URLAPI = "api/EventTables/PostEventTable";
+        var URLAPI = "api/EventTables";
+        //Admin Login chk
+        function admin_login() {
+            var user = {
+                Admin_Username : $('#aemail').val(),
+                Admin_Password : $('#apassword').val()
+            };
+            $.ajax({
+                url: "api/Admin_Table/LoginCheck",
+                //cache: false,
+                type: 'POST',
+                dataType: "json",
+                data: user,
+                success: function (msg) {
+                    if (msg) {
+                        console.log(msg);
+                    }
+                    else
+                        alert("Addition not sucessful");
+                }
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         function create() {
+            var ID = $('#id').val();
             var product = {
-                //ID: $('#id').val(),
+                
                 Ename: $('#Ename').val(),
                 Pname: $('#pname').val(),
                 Edes: $('#description').val(),
@@ -20,9 +67,9 @@
                 isPassed: $('#ispassed').val()
             };
             $.ajax({
-                url: URLAPI,
-                cache: false,
-                type: 'POST',
+                url: URLAPI +"/PutEventTable/"+ID,
+                //cache: false,
+                type: 'PUT',
                 dataType: "json",
                 data: product,
                 success: function (msg) {
@@ -40,7 +87,7 @@
 
     <h2> ADD DATA </h2>
     <label>ID:</label>
-    <input type="text" id="id" /><br />
+    <input type="number" id="id" /><br />
     <label>Event Name:</label>
     <input type="text" id="Ename" /><br />
     <label>Event Date:</label>
@@ -51,7 +98,16 @@
     <input type="text" id="pname" /><br />
     <label>IsPassed:</label>
     <input type="text" id="ispassed" /><br />
-    <input type="button" onclick="create()" />
+    <input type="button" onclick="create()" /><br />
+
+
+    <input type="email" placeholder="Email" id="aemail" />
+    <input type="password" placeholder="Password" id="apassword"/>
+    <input type="button" value="Login" onclick="admin_login()" />
+
+
+
+
 
 </body>
 </html>

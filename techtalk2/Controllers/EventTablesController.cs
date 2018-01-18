@@ -33,6 +33,12 @@ namespace techtalk2.Controllers
             return pastEvents;
         }
 
+        [HttpGet]
+        public IEnumerable<EventTable> GetAllEvents()
+        {
+            return db.EventTables;
+        }
+
         // GET: api/EventTables/5
         [ResponseType(typeof(EventTable))]
         public IHttpActionResult GetEventTable(int id)
